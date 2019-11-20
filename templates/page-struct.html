@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Cloudarp eirl">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="Upload files free, subir archivos gratis, cloudarp, file 2gb">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:title" property="og:title" content="cloudarp">
+    <meta property="og:type" content="site" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/infowindows.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+
+    {% block head %}{% endblock %}
+</head>
+<body>    
+{% block content %}{% endblock %}
+{% block footer_script %}
+  <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="{% static 'js/axios.js' %}"></script>
+  <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+</body>
+
+</html>

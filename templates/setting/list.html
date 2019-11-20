@@ -1,0 +1,59 @@
+{% extends "page-struct.html" %}
+{% block title %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="wrap">
+     <div id="appCpanel">
+        <div class="container1">
+
+            <div class="row mt-5">            
+                <div class="col-lg-12">                    
+                    <div class="md-form mt-2">
+                      <input class="form-control" type="text" v-model="search" @keyup.enter="fcsearch" placeholder="Search first name, last name,Registration key" aria-label="Search">
+                    </div>                       
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="bg-primary text-light">
+                                <th>ID</th>                                    
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                                <th>registration key</th>
+                                <th>web</th>    
+                                <th></th>
+                            </tr>    
+                        </thead>
+                        <tbody>
+                            <tr v-for="cpanel of cpanels">
+                                <td>[[cpanel.id]]</td>                                
+                                <td>[[cpanel.first_name]]</td>
+                                <td>[[cpanel.last_name]]</td>
+                                <td>[[cpanel.username]]</td>
+                                <td>[[cpanel.registration_key]]</td>
+                                <td>[[cpanel.wordpress_install_url]]</td>
+                                <td>
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-secondary" title="Editar" @click="btnediItem(cpanel.id,cpanel.has_trial_coupon,cpanel.mkting_client,cpanel.ismarket_listing)">Edit</button>    
+                                </div>
+                                </td>
+                            </tr>    
+                        </tbody>
+                    </table>                    
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>
+
+<script type="text/javascript">
+    var idxUrl={
+        list:"{% url 'listProduct' %}",
+        generate:"{% url 'generateProject' %}"
+    };
+</script>
+
+{% endblock %}
+
