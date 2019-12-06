@@ -18,7 +18,7 @@ def listProduct(request):
 	list_item['status'] = False
 	list_item['data'] = {}
 	mycursor = connection.cursor()
-	mycursor.execute("SELECT id,first_name,username,last_name,wordpress_install_url,registration_key,has_trial_coupon,mkting_client,ismarket_listing FROM flex_idx_users order by first_name,last_name;")
+	mycursor.execute("SELECT id,first_name,username,last_name,wordpress_install_url,registration_key,has_trial_coupon,mkting_client,ismarket_listing,user_show_quizz FROM flex_idx_users order by first_name,last_name;")
 	list_item['data'] = dictfetchall(mycursor)
 	mycursor.close()
 	connection.close()
@@ -33,9 +33,10 @@ def generateProject(request):
 		has_trial_coupon = request.POST['has_trial_coupon']
 		mkting_client = request.POST['mkting_client']
 		ismarket_listing = request.POST['ismarket_listing']
+		user_show_quizz = request.POST['user_show_quizz']
 
 		mycursor = connection.cursor()
-		mycursor.execute("UPDATE flex_idx_users set has_trial_coupon=%s,mkting_client=%s,ismarket_listing=%s where id=%s",[has_trial_coupon,mkting_client,ismarket_listing,vid])
+		mycursor.execute("UPDATE flex_idx_users set has_trial_coupon=%s,mkting_client=%s,ismarket_listing=%s,user_show_quizz=%s where id=%s",[has_trial_coupon,mkting_client,ismarket_listing,user_show_quizz,vid])
 		mycursor.close()
 		connection.close()
 		list_item['status'] = True
